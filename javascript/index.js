@@ -481,5 +481,13 @@ function openRules(){
 main()
 
 function main(){
+  fetch("intense-tundra-74411.herokuapp.com/games/new", {
+    method: "post",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(
+      {'user_id': 1, 'guesses': 40})
+    })
+    .then(res => res.json())
+    .then(json => console.log(json))
   welcome()
 }
