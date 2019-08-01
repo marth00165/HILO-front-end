@@ -360,7 +360,14 @@ h3 {
   }
   input::placeholder{
     color: #264F7A;
-    font-size: .6em;
+    font-size: .4em;
+  }
+  input{
+    line-height: 100%; 
+    font-size: .4em;
+  }
+  .big-container{
+    padding-bottom: 4%;
   }
   #player1info p{
     font-size: .6em;
