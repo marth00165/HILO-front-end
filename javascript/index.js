@@ -67,11 +67,14 @@ const gameURL = ''
 
   function appendGame(){
     let body = document.body
+    let rulesDiv = document.createElement("div")
+    rulesDiv.id = "rulesDiv"
     host = document.createElement("img")
     host.id = "ratrules"
     host.src = "../images/therat/ratRules.png"
     host.addEventListener("click", openRules)
-    body.appendChild(host)
+    rulesDiv.appendChild(host)
+    body.appendChild(rulesDiv)
     let tracker = document.getElementById("user1")
     tracker.id = "displayed"
     nameInput1 = document.createElement("input")
@@ -117,12 +120,16 @@ const gameURL = ''
     //buttons append
     let smallbuttons = [higherButton, lowerButton]
     smallbuttons.forEach(function(button) {
+      button.className = "smallButton"
+      button.id = "buttonRow1"
       smallFooter.appendChild(button)
     })
 
     let buttons = [holdButton, newBaseCardButton]
     buttons.forEach(function(button) {
-      footer.appendChild(button)
+      button.className = "smallButton"
+      button.id = "buttonRow2"
+      smallFooter.appendChild(button)
     })
   }
 
