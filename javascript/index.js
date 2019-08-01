@@ -1,7 +1,8 @@
 const hostRight = ["../images/therat/right/amazed.png", "../images/therat/right/cool.png", "../images/therat/right/glimmer.png", "../images/therat/right/right.png", "../images/therat/right/roll.png", "../images/therat/right/wild.png", "../images/therat/right/wowRight.png"]
 const hostWrong = ["../images/therat/wrong/bigOOF.png", "../images/therat/wrong/crickets.png", "../images/therat/wrong/disappointedDad.png", "../images/therat/wrong/firstTime.png", "../images/therat/wrong/grandmaBridge.png", "../images/therat/wrong/hurt.png", "../images/therat/wrong/lawnChair.png", "../images/therat/wrong/prison.png", "../images/therat/wrong/ramsay.png"]
 const avatarImages = ["../images/avatars/1.jpg", "../images/avatars/2.png", "../images/avatars/3.png", "../images/avatars/4.png", "../images/avatars/5.png", "../images/avatars/6.png", "../images/avatars/7.png", "../images/avatars/8.png", "../images/avatars/9.png", "../images/avatars/10.png", "../images/avatars/11.png", "../images/avatars/12.png", "../images/avatars/13.png", "../images/avatars/14.png", "../images/avatars/15.png", "../images/avatars/16.png", "../images/avatars/17.png", "../images/avatars/18.png", "../images/avatars/19.png", "../images/avatars/20.png", "../images/avatars/21.png", "../images/avatars/hot_dog.jpg"]
-const userUrl = 'https://localhost3000/users'
+const userUrl = 'https://intense-tundra-74441.herokuapp.com/users'
+const gameURL = ''
 
   function variables() {
 
@@ -88,7 +89,8 @@ const userUrl = 'https://localhost3000/users'
     nameInput1.addEventListener("keypress", function(e){
       var key = e.which || e.keyCode;
       if(key === 13){
-        user1nameSpace.innerText = e.target.value
+        let name = e.target.value
+        user1nameSpace.innerText = name
         user1info.removeChild(nameInput1)
         user1info.appendChild(user1nameSpace)
       }
