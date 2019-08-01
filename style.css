@@ -13,11 +13,12 @@ input{
   text-align: center;
   color: white;
   font-size: 18px;
-  max-width: 50%;
+  max-width: 20vw;
 }
 
 input::placeholder{
   color: #264F7A;
+  font-size: .5em;
 }
 
 body {
@@ -134,43 +135,11 @@ h3 {
   box-shadow: 0 9px #999;
   margin-left: 50px;
 }
-.smallButton {
-  display: flex;
-  justify-content: flex-end;
-  display: inline-block;
-  padding: 15px 25px;
-  font-size: 24px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: white;
-  background-color: #FF5258;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #999;
-  margin-left: 50px;
-}
-
- .smallButtons button:hover {background-color: #E0B30D}
-
- .smallButtons button:active {
-  background-color: #E0B30D;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
-}
-
-.smallButton:hover {background-color: #E0B30D}
-
-.smallButton:active {
- background-color: #E0B30D;
- box-shadow: 0 5px #666;
- transform: translateY(4px);
-}
 
 
 #footer {
   border-top: 2px, #F9C80E;
+  margin-bottom: 40%;
 
 }
 
@@ -316,36 +285,189 @@ h3 {
   to {top:0; opacity:1}
 }
 
-#rat{
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  width: 40vw;
-  height: 30vh;
-  margin-top: 10%;
-  margin-bottom: -1%;
+@media screen and (max-width: 1000px) {
+  #rat {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100vw;
+    height: 20vh;
+    margin-top: 10%;
+    margin-bottom: -1%;
+    text-align: center;
+  }
+  #rat img {
+    height: 100%;
+  }
+  #rulesDiv{
+    position: fixed;
+    bottom: 0;
+    margin-bottom: -1%;
+    width: 100vw;
+    height: 20vh;
+    text-align: center;   
+  }
+  #ratrules{
+    height: 100%;
+  }
+
+  .smallButtons{
+    display: grid;
+    grid-template-columns: 1;
+    grid-template-rows: repeat(2, 1fr);
+  }
+  .smallButton {
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: white;
+    background-color: #FF5258;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+    margin-left: 50px;
+    margin-bottom: 2%;
+    font-size: 1.1em;
+  }
+
+  #buttonRow1{
+    grid-column: 1,1;
+    grid-row: 1,1;
+  }
+
+  #buttonRow2{
+    grid-column: 1,1;
+    grid-row: 2,2;
+  }
+  
+   .smallButton:hover {background-color: #E0B30D}
+  
+   .smallButton:active {
+    background-color: #E0B30D;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+  
+  .smallButton:hover {background-color: #E0B30D}
+  
+  .smallButton:active {
+   background-color: #E0B30D;
+   box-shadow: 0 5px #666;
+   transform: translateY(4px);
+  }
+  input::placeholder{
+    color: #264F7A;
+    font-size: .6em;
+  }
+  #player1info p{
+    font-size: .6em;
+  }
+  #player2info p{
+    font-size: .6em;
+  }
+  .card {
+    margin-top: 10%;
+    border-radius: 4px;
+    padding: 1px;
+    padding-top: 2%;
+    width: 15%;
+    margin-bottom: 20px;
+    margin-right: 1px;
+  }
+  .playerinfo img{
+    max-width: 80%;
+  
+  }
+  #rathost{
+    position: fixed;
+    max-height: 35%;
+    bottom: 0;
+    right: 0;
+    margin-right: 0%;
+    margin-bottom: 0%;
+  }
 }
 
-#rat img {
-  height: 100%;
-}
+@media screen and (min-width: 1001px) {
+  #rat{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 40vw;
+    height: 30vh;
+    margin-top: 10%;
+    margin-bottom: -1%;
+  }
 
-#rathost{
-  position: fixed;
-  max-height: 300px;
-  bottom: 0;
-  right: 0;
-  margin-right: 0%;
-  margin-bottom: 0%;
-}
+  #rat img {
+    height: 100%;
+  }
 
-#ratrules{
-  position: fixed;
-  max-height: 200px;
-  bottom: 0;
-  right: 0;
-  margin-right: 0%;
-  margin-bottom: 0%;
+  #ratrules{
+    position: fixed;
+    height: 20vh;
+    bottom: 0;
+    right: 0;
+    margin-right: 0%;
+    margin-bottom: 0%;
+  }
+  .smallButton {
+    display: flex;
+    justify-content: flex-end;
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: white;
+    background-color: #FF5258;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+    margin-left: 50px;
+  }
+  
+   .smallButtons button:hover {background-color: #E0B30D}
+  
+   .smallButtons button:active {
+    background-color: #E0B30D;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+  
+  .smallButton:hover {background-color: #E0B30D}
+  
+  .smallButton:active {
+   background-color: #E0B30D;
+   box-shadow: 0 5px #666;
+   transform: translateY(4px);
+  }
+  input::placeholder{
+    color: #264F7A;
+    font-size: 1.2em;
+  }
+  .card {
+    border-radius: 4px;
+    padding: 5px;
+    padding-top: 2%;
+    width: 12%;
+    margin-bottom: 20px;
+    margin-right: 5px;
+  
+  }
+  #rathost{
+    position: fixed;
+    max-height: 300px;
+    bottom: 0;
+    right: 0;
+    margin-right: 0%;
+    margin-bottom: 0%;
+  }
 }
 
 .hidden{
