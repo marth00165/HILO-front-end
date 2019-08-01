@@ -2,7 +2,7 @@ const hostRight = ["../images/therat/right/amazed.png", "../images/therat/right/
 const hostWrong = ["../images/therat/wrong/bigOOF.png", "../images/therat/wrong/crickets.png", "../images/therat/wrong/disappointedDad.png", "../images/therat/wrong/firstTime.png", "../images/therat/wrong/grandmaBridge.png", "../images/therat/wrong/hurt.png", "../images/therat/wrong/lawnChair.png", "../images/therat/wrong/prison.png", "../images/therat/wrong/ramsay.png"]
 const avatarImages = ["../images/avatars/1.jpg", "../images/avatars/2.png", "../images/avatars/3.png", "../images/avatars/4.png", "../images/avatars/5.png", "../images/avatars/6.png", "../images/avatars/7.png", "../images/avatars/8.png", "../images/avatars/9.png", "../images/avatars/10.png", "../images/avatars/11.png", "../images/avatars/12.png", "../images/avatars/13.png", "../images/avatars/14.png", "../images/avatars/15.png", "../images/avatars/16.png", "../images/avatars/17.png", "../images/avatars/18.png", "../images/avatars/19.png", "../images/avatars/20.png", "../images/avatars/21.png", "../images/avatars/hot_dog.jpg"]
 const userUrl = 'https://intense-tundra-74441.herokuapp.com/users'
-const gameURL = ''
+const gamesURL = 'https://intense-tundra-74441.herokuapp.com/games'
 
   function variables() {
 
@@ -503,7 +503,7 @@ function openRules(){
 
 function postWinner(nickname, clicks){
   if(nickname === "h o t d o g" || nickname === "El Curry La Lasagna"){
-    return fetch("https://intense-tundra-74441.herokuapp.com/games", {
+    return fetch(gamesURL, {
       method: "post",
       headers: {"Content-Type": "application/json", "Accept": "application/json"},
       body: JSON.stringify(
@@ -512,7 +512,7 @@ function postWinner(nickname, clicks){
       .then(res => res.json())
       .then(json => leaderBoard(json))
   }else {
-  return fetch("https://intense-tundra-74441.herokuapp.com/games", {
+  return fetch(gamesURL, {
     method: "post",
     headers: {"Content-Type": "application/json", "Accept": "application/json"},
     body: JSON.stringify(
@@ -526,12 +526,18 @@ function postWinner(nickname, clicks){
 function leaderBoard(response){
     let board = document.getElementById("leaderBoard")
     let rank = document.createElement("div")
+    getLeaders()
+    .then(json => console.log(json))
     rank.innerHTML = `You ranked # ${response.rank.gameIndex} out of ${response.rank.totalGames}<br> with ${response.game.guesses} guesses.`
     leaders = document.createElement("div")
     leaders.id = "leaders"
     leaders.innerText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." + "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." + "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     board.appendChild(rank)
-    board.appendChild(leaders)
+}
+
+function getLeaders(){
+  return fetch(gamesURL)
+  .then(res => res.json())
 }
 
 main()
