@@ -31,6 +31,14 @@ const gamesURL = 'https://intense-tundra-74441.herokuapp.com/games'
         hr1.className = "user-hr"
         user1nameSpace = document.createElement("p")
         user1nameSpace.innerText = "h o t d o g"
+        user1nameSpace.addEventListener("click", function(e){
+          nameInput1.value = ""
+          let temp = user1nameSpace.innerText
+          user1info.removeChild(user1nameSpace)
+          nameInput1.placeholder = temp
+          user1info.appendChild(nameInput1)
+          nameInput1.focus()
+        })
         user2info = document.getElementById("player2info")
         avatar2 = document.createElement("img")
         avatar2.src = avatarImages[Math.floor(Math.random() * avatarImages.length)]
@@ -38,6 +46,14 @@ const gamesURL = 'https://intense-tundra-74441.herokuapp.com/games'
         hr2.className = "user-hr"
         user2nameSpace = document.createElement("p")
         user2nameSpace.innerText = "El Curry La Lasagna"
+        user2nameSpace.addEventListener("click", function(e){
+          nameInput2.value = ""
+          let temp = user2nameSpace.innerText
+          user2info.removeChild(user2nameSpace)
+          nameInput2.placeholder = temp
+          user2info.appendChild(nameInput2)
+          nameInput2.focus()
+        })
         content = document.getElementById("content1")
         content2 = document.getElementById('content2')
         footer = document.getElementById('footer')
