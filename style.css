@@ -320,12 +320,14 @@ h3 {
   position: fixed;
   bottom: 0;
   right: 0;
+  width: 40vw;
+  height: 30vh;
   margin-top: 10%;
   margin-bottom: -1%;
 }
 
 #rat img {
-  max-height: 100px;
+  height: 100%;
 }
 
 #rathost{
