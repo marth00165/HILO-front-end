@@ -325,12 +325,12 @@ h3 {
 }
 
 #rat img {
-  max-height: 275px;
+  max-height: 100px;
 }
 
 #rathost{
   position: fixed;
-  max-height: 300px;
+  max-height: 100px;
   bottom: 0;
   right: 0;
   margin-right: 0%;
