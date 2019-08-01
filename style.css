@@ -111,7 +111,6 @@ h3 {
   color: white;
   padding: 15px 32px;
   margin: 50px;
-  text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
@@ -315,9 +314,11 @@ h3 {
     display: grid;
     grid-template-columns: 1;
     grid-template-rows: repeat(2, 1fr);
+    align-items: center;
   }
   .smallButton {
-    padding: 15px 25px;
+    padding-top: 4px;
+    padding-bottom: 4px;
     font-size: 24px;
     cursor: pointer;
     text-align: center;
@@ -328,7 +329,6 @@ h3 {
     border: none;
     border-radius: 15px;
     box-shadow: 0 9px #999;
-    margin-left: 50px;
     margin-bottom: 2%;
     font-size: 1.1em;
   }
@@ -360,7 +360,7 @@ h3 {
   }
   input::placeholder{
     color: #264F7A;
-    font-size: .4em;
+    font-size: 60%;
   }
   input{
     line-height: 100%; 
