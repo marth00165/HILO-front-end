@@ -422,7 +422,12 @@ const gamesURL = 'https://intense-tundra-74441.herokuapp.com/games'
           confetti.start()
           let newGameButton = document.createElement("button")
           newGameButton.innerText = "New Game"
-          winner.innerText = "🎊 " + player1info.innerText + " wins! 🎊"
+          if(player1info.innerTEXT !== ""){
+              winner.innerText = "🎊 " + player1info.innerText + " wins! 🎊"
+          }
+          else{
+              winner.innerText = "🎊 Player 1 wins! 🎊"
+          }
           newGameButton.addEventListener("click", function(e){
             document.body.innerHTML = clone
             welcome()
@@ -440,7 +445,12 @@ const gamesURL = 'https://intense-tundra-74441.herokuapp.com/games'
           confetti.start()
           let newGameButton = document.createElement("button")
           newGameButton.innerText = "New Game"
-          winner.innerText = player2info.innerText + " wins! "
+          if(player2info.innerTEXT !== ""){
+            winner.innerText = "🎊 " + player2info.innerText + " wins! 🎊"
+          }
+          else{
+            winner.innerText = "🎊 Player 2 wins! 🎊"
+          }
           newGameButton.addEventListener("click", function(e){
             document.body.innerHTML = clone
             welcome()
