@@ -390,7 +390,7 @@ const gameURL = ''
           confetti.start()
           let newGameButton = document.createElement("button")
           newGameButton.innerText = "New Game"
-          winner.innerText = "Player 1 wins!"
+          winner.innerText = player1info.innerText + " wins!"
           newGameButton.addEventListener("click", function(e){
             document.body.innerHTML = clone
             welcome()
@@ -407,7 +407,7 @@ const gameURL = ''
           confetti.start()
           let newGameButton = document.createElement("button")
           newGameButton.innerText = "New Game"
-          winner.innerText = "Player 2 wins! "
+          winner.innerText = player2info.innerText + " wins! "
           newGameButton.addEventListener("click", function(e){
             document.body.innerHTML = clone
             welcome()
