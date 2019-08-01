@@ -20,6 +20,9 @@ input::placeholder{
   color: #264F7A;
   font-size: .5em;
 }
+.body {
+  overflow: hidden;
+}
 
 body {
   background-color: #38B6FF;
@@ -79,7 +82,22 @@ h3 {
 
 }
 
+#winModal{
+  text-align: center;
+}
 
+#leaderBoard{
+  text-align: center;
+}
+
+#winModal button{
+  width: 20%;
+  position: fixed;
+  bottom: 0;
+  right: 50%;
+  margin-right: -10%; 
+  margin-bottom: 1%;
+}
 
 .big-container{
   display: grid;
@@ -475,6 +493,19 @@ h3 {
     margin-right: 0%;
     margin-bottom: 0%;
   }
+}
+
+#leaders {
+  background-color: #32A4E6;
+  border: 1px;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 10%;
+  height: 40vh;
+  margin-left: 5%;
+  margin-right: 5%;
+  text-align: left;
+  overflow: scroll;
 }
 
 .hidden{
