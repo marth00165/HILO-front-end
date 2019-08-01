@@ -502,10 +502,21 @@ h3 {
   border-radius: 10px;
   margin-top: 10%;
   height: 40vh;
-  margin-left: 5%;
-  margin-right: 5%;
-  text-align: left;
+  margin-left: 10%;
+  margin-right: 10%;
   overflow: scroll;
+}
+
+#leaders ul{
+  list-style-type: none;
+}
+
+.leaderSpanLeft{
+  text-align: left;
+}
+
+.leaderSpanRight{
+  text-align: left;
 }
 
 .hidden{
