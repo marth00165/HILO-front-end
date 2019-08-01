@@ -433,7 +433,7 @@ function welcome(){
   let motto = document.createElement('h3')
 
   start = document.createElement('button')
-  startButton = document.getElementById('startButton')
+  start = document.getElementById('startButton')
 
   startButton.addEventListener("click", function(e){
     body.removeChild(logo)
