@@ -384,7 +384,7 @@ const userUrl = 'https://localhost3000/users'
 
   function checkWinner(){
       if(user1Cards.length === 6){
-
+          postWinner(user1nameSpace.innerText, user1Clicks)
           confetti.start()
           let newGameButton = document.createElement("button")
           newGameButton.innerText = "New Game"
@@ -401,6 +401,7 @@ const userUrl = 'https://localhost3000/users'
           // document.body.innerHTML = clone
           // welcome()
       }else if (user2Cards.length === 6){
+          postWinner(user2nameSpace.innerText, user2Clicks)
           confetti.start()
           let newGameButton = document.createElement("button")
           newGameButton.innerText = "New Game"
@@ -478,16 +479,31 @@ function openRules(){
       }
 }
 
+function postWinner(nickname, clicks){
+  if(nickname === "h o t d o g" || nickname === "El Curry La Lasagna"){
+    return fetch("https://intense-tundra-74441.herokuapp.com/games", {
+      method: "post",
+      headers: {"Content-Type": "application/json", "Accept": "application/json"},
+      body: JSON.stringify(
+        {'nickname': "blank" , 'guesses': clicks})
+      })
+      .then(res => res.json())
+      .then(json => console.log(json.user.nickname, json))
+  }else {
+  return fetch("https://intense-tundra-74441.herokuapp.com/games", {
+    method: "post",
+    headers: {"Content-Type": "application/json", "Accept": "application/json"},
+    body: JSON.stringify(
+      {'nickname': nickname , 'guesses': clicks})
+    })
+    .then(res => res.json())
+    .then(json => console.log(json.user.nickname, json))
+  }
+}
+
 main()
 
 function main(){
-  fetch("intense-tundra-74411.herokuapp.com/games/new", {
-    method: "post",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify(
-      {'user_id': 1, 'guesses': 40})
-    })
-    .then(res => res.json())
-    .then(json => console.log(json))
+
   welcome()
 }
