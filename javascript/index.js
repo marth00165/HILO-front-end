@@ -266,7 +266,6 @@ const gamesURL = 'https://intense-tundra-74441.herokuapp.com/games'
           setTimeout(function() {
             changeTurns()
             content.innerHTML = ""
-            console.log(deck.base)
             player1Cards()
 
           }, 2000)}else{
@@ -542,12 +541,32 @@ function postWinner(nickname, clicks){
 function leaderBoard(response){
     let board = document.getElementById("leaderBoard")
     let rank = document.createElement("div")
-    getLeaders()
-    .then(json => console.log(json))
-    rank.innerHTML = `You ranked # ${response.rank.gameIndex} out of ${response.rank.totalGames}<br> with ${response.game.guesses} guesses.`
-    leaders = document.createElement("div")
+    let leaders = document.createElement("div")
     leaders.id = "leaders"
-    leaders.innerText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." + "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." + "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    let ul = document.createElement("ul")
+    getLeaders()
+    .then(json => {
+      for (let i = 0; i < json.length; i++) {
+        const game = json[i];
+        if(game.nickname === "blank" || game.nickname === ""){
+          game.nickname = `user ${game.user_id}`
+        }
+        let li = document.createElement("li")
+        let span1 = document.createElement("span")
+        span1.className = "leaderSpanLeft"
+        let span2 = document.createElement("span")
+        span2.className = "leaderSpanRight"
+        span1.innerHTML = `<b>${i + 1}.</b> ${game.nickname}`
+        span2.innerHTML = `&nbsp;&nbsp;&nbsp;${game.guesses} guesses`
+        li.appendChild(span1)
+        li.appendChild(span2)
+        ul.appendChild(li)
+      }
+      leaders.appendChild(ul)
+      board.appendChild(leaders)
+    })
+    rank.innerHTML = `You ranked # ${response.rank.gameIndex} out of ${response.rank.totalGames}<br> with ${response.game.guesses} guesses.`
+    //leaders.innerText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." + "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." + "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     board.appendChild(rank)
 }
 
