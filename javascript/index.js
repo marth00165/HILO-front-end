@@ -331,19 +331,19 @@ const gamesURL = 'https://intense-tundra-74441.herokuapp.com/games'
 
   function newBaseCard(){
     if (turn === 1){
-      let win = true
-      user1Clicks = 100
-      checkWinner(win)
-      // ++user1Clicks
-      // deck.base.pop()
-      // user1Cards.pop()
-      // let newCard = deck.deal()
-      // deck.base.push(newCard)
-      // user1Cards.push(newCard)
-      // content.innerHTML = ""
-      // newBaseCardButton.disabled = true;
-      // newBaseCardButton.style.background = "#7298B3"
-      // player1Cards()
+      // let win = true
+      // user1Clicks = 100
+      // checkWinner(win)
+      ++user1Clicks
+      deck.base.pop()
+      user1Cards.pop()
+      let newCard = deck.deal()
+      deck.base.push(newCard)
+      user1Cards.push(newCard)
+      content.innerHTML = ""
+      newBaseCardButton.disabled = true;
+      newBaseCardButton.style.background = "#7298B3"
+      player1Cards()
     }
     else if(turn === 2) {
       ++user2Clicks
