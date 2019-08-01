@@ -249,7 +249,6 @@ h3 {
 }
 
 .modal button{
-
   display: inline-block;
   padding: 15px 25px;
   font-size: 24px;
@@ -420,7 +419,7 @@ h3 {
     text-align: left;
   }
   .modal-content {
-    font-size: 16px;
+    font-size: .5em;
     color: white;
     position: relative;
     background-color: #38B6FF;
@@ -436,7 +435,16 @@ h3 {
     animation-duration: 0.4s
   }
   .modal-content h1 {
-    font-size: 2em;
+    font-size: 1em;
+  }
+
+  #winModal button{
+    width: 40%;
+    position: fixed;
+    bottom: 0;
+    right: 50%;
+    margin-right: -20%; 
+    margin-bottom: 14%;
   }
 }
 
