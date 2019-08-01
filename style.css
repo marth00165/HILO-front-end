@@ -332,7 +332,7 @@ h3 {
 
 #rathost{
   position: fixed;
-  max-height: 300px;
+  max-height: 100px;
   bottom: 0;
   right: 0;
   margin-right: 0%;
