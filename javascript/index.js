@@ -7,6 +7,7 @@ const gameURL = ''
   function variables() {
 
         modal = document.getElementById("myModal");
+        winModal = document.getElementById("winModal")
         winner = document.getElementById('winner')
         turn = 1;
         user1Cards = []
@@ -96,6 +97,7 @@ const gameURL = ''
         user1nameSpace.innerText = name
         user1info.removeChild(nameInput1)
         user1info.appendChild(user1nameSpace)
+        nameInput1.removeEventListener("blur")
       }
     })
     nameInput1.addEventListener("blur", function(e){
@@ -109,6 +111,7 @@ const gameURL = ''
         user2nameSpace.innerText = e.target.value
         user2info.removeChild(nameInput2)
         user2info.appendChild(user2nameSpace)
+        nameInput1.removeEventListener("blur")
       }
     })
     nameInput2.addEventListener("blur", function(e){
@@ -310,12 +313,14 @@ const gameURL = ''
   function holdCards() {
     newBaseCardButton.disabled = false;
     if(turn === 1){
+      ++user1Clicks
       changeTurns()
       turn = 2
       deck.base.length = 0
       deck.base = user1Cards.map(e => e)
     }
     else if(turn === 2){
+      ++user2Clicks
       changeTurns()
       turn = 1
       deck2.base.length = 0
@@ -326,17 +331,22 @@ const gameURL = ''
 
   function newBaseCard(){
     if (turn === 1){
-      deck.base.pop()
-      user1Cards.pop()
-      let newCard = deck.deal()
-      deck.base.push(newCard)
-      user1Cards.push(newCard)
-      content.innerHTML = ""
-      newBaseCardButton.disabled = true;
-      newBaseCardButton.style.background = "#7298B3"
-      player1Cards()
+      let win = true
+      user1Clicks = 100
+      checkWinner(win)
+      // ++user1Clicks
+      // deck.base.pop()
+      // user1Cards.pop()
+      // let newCard = deck.deal()
+      // deck.base.push(newCard)
+      // user1Cards.push(newCard)
+      // content.innerHTML = ""
+      // newBaseCardButton.disabled = true;
+      // newBaseCardButton.style.background = "#7298B3"
+      // player1Cards()
     }
     else if(turn === 2) {
+      ++user2Clicks
       deck2.base.pop()
       user2Cards.pop()
       let newCard = deck2.deal()
@@ -391,19 +401,20 @@ const gameURL = ''
     holdButton.style.background = "#FF5258"
   }
 
-  function checkWinner(){
-      if(user1Cards.length === 6){
+  function checkWinner(cheat = false){
+      if(user1Cards.length === 6 || cheat === true){
           postWinner(user1nameSpace.innerText, user1Clicks)
           confetti.start()
           let newGameButton = document.createElement("button")
           newGameButton.innerText = "New Game"
-          winner.innerText = player1info.innerText + " wins!"
+          winner.innerText = "🎊 " + player1info.innerText + " wins! 🎊"
           newGameButton.addEventListener("click", function(e){
             document.body.innerHTML = clone
             welcome()
           })
-          winner.appendChild(newGameButton)
+          winModal.appendChild(newGameButton)
           modal.style.display = "block";
+          document.body.className = "body";
 
 
           // alert("Player 1 wins!")
@@ -419,8 +430,9 @@ const gameURL = ''
             document.body.innerHTML = clone
             welcome()
           })
-          winner.appendChild(newGameButton)
+          winModal.appendChild(newGameButton)
           modal.style.display = "block";
+          document.body.className = "body";
           // alert("Player 2 wins!")
           // document.body.innerHTML = clone
           // welcome()
@@ -430,6 +442,7 @@ const gameURL = ''
 
 
 function welcome(){
+  document.body.className = ""
   confetti.stop()
   variables()
   clone = document.body.innerHTML
@@ -497,7 +510,7 @@ function postWinner(nickname, clicks){
         {'nickname': "blank" , 'guesses': clicks})
       })
       .then(res => res.json())
-      .then(json => console.log(json.user.nickname, json))
+      .then(json => leaderBoard(json))
   }else {
   return fetch("https://intense-tundra-74441.herokuapp.com/games", {
     method: "post",
@@ -506,8 +519,19 @@ function postWinner(nickname, clicks){
       {'nickname': nickname , 'guesses': clicks})
     })
     .then(res => res.json())
-    .then(json => console.log(json.user.nickname, json))
+    .then(json => leaderBoard(json))
   }
+}
+
+function leaderBoard(response){
+    let board = document.getElementById("leaderBoard")
+    let rank = document.createElement("div")
+    rank.innerHTML = `You ranked # ${response.rank.gameIndex} out of ${response.rank.totalGames}<br> with ${response.game.guesses} guesses.`
+    leaders = document.createElement("div")
+    leaders.id = "leaders"
+    leaders.innerText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." + "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." + "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    board.appendChild(rank)
+    board.appendChild(leaders)
 }
 
 main()
