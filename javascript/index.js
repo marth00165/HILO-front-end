@@ -346,9 +346,6 @@ const gamesURL = 'https://intense-tundra-74441.herokuapp.com/games'
 
   function newBaseCard(){
     if (turn === 1){
-      // let win = true
-      // user1Clicks = 100
-      // checkWinner(win)
       ++user1Clicks
       deck.base.pop()
       user1Cards.pop()
@@ -416,17 +413,17 @@ const gamesURL = 'https://intense-tundra-74441.herokuapp.com/games'
     holdButton.style.background = "#FF5258"
   }
 
-  function checkWinner(cheat = false){
-      if(user1Cards.length === 6 || cheat === true){
+  function checkWinner(){
+      if(user1Cards.length === 6){
           postWinner(user1nameSpace.innerText, user1Clicks)
           confetti.start()
           let newGameButton = document.createElement("button")
           newGameButton.innerText = "New Game"
-          if(player1info.innerTEXT !== undefined){
-              winner.innerText = "🎊 " + player1info.innerText + " wins! 🎊"
+          if(user1info.innerText == ""){
+            winner.innerText = "🎊 Player 1 wins! 🎊"
           }
           else{
-              winner.innerText = "🎊 Player 1 wins! 🎊"
+            winner.innerText = "🎊 " + user1info.innerText + " wins! 🎊"
           }
           newGameButton.addEventListener("click", function(e){
             document.body.innerHTML = clone
@@ -445,12 +442,12 @@ const gamesURL = 'https://intense-tundra-74441.herokuapp.com/games'
           confetti.start()
           let newGameButton = document.createElement("button")
           newGameButton.innerText = "New Game"
-          console.log(player2info.innerTEXT)
-          if(player2info.innerTEXT !== undefined){
-            winner.innerText = "🎊 " + player2info.innerText + " wins! 🎊"
+          console.log(user2info.innerTEXT)
+          if(user2info.innerText == ""){
+            winner.innerText = "🎊 Player 2 wins! 🎊"
           }
           else{
-            winner.innerText = "🎊 Player 2 wins! 🎊"
+            winner.innerText = "🎊 " + user2info.innerText + " wins! 🎊"
           }
           newGameButton.addEventListener("click", function(e){
             document.body.innerHTML = clone
