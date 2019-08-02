@@ -121,7 +121,6 @@ const gamesURL = 'https://intense-tundra-74441.herokuapp.com/games'
       }
     })
     nameInput1.addEventListener("blur", function(e){
-      if(key === 13){
         let name = e.target.value
         if(name === ""){
           
@@ -131,7 +130,7 @@ const gamesURL = 'https://intense-tundra-74441.herokuapp.com/games'
           user1info.appendChild(user1nameSpace)
         }
       }
-    })
+    )
     nameInput2.addEventListener("keypress", function(e){
       var key = e.which || e.keyCode;
       if(key === 13){
@@ -438,11 +437,11 @@ const gamesURL = 'https://intense-tundra-74441.herokuapp.com/games'
           confetti.start()
           let newGameButton = document.createElement("button")
           newGameButton.innerText = "New Game"
-          if(user1info.innerText == ""){
-            winner.innerText = "🎊 Player 1 wins! 🎊"
+          if(user1info.innerText){
+            winner.innerText = "🎊 " + user1info.innerText + " wins! 🎊"
           }
           else{
-            winner.innerText = "🎊 " + user1info.innerText + " wins! 🎊"
+            winner.innerText = "🎊 Player 1 wins! 🎊"
           }
           newGameButton.addEventListener("click", function(e){
             document.body.innerHTML = clone
@@ -461,12 +460,12 @@ const gamesURL = 'https://intense-tundra-74441.herokuapp.com/games'
           confetti.start()
           let newGameButton = document.createElement("button")
           newGameButton.innerText = "New Game"
-          console.log(user2info.innerTEXT)
-          if(user2info.innerText == ""){
-            winner.innerText = "🎊 Player 2 wins! 🎊"
+          console.log(user2info.innerText)
+          if(user2info.innerText){
+              winner.innerText = "🎊 " + user2info.innerText + " wins! 🎊"
           }
           else{
-            winner.innerText = "🎊 " + user2info.innerText + " wins! 🎊"
+              winner.innerText = "🎊 Player 2 wins! 🎊"
           }
           newGameButton.addEventListener("click", function(e){
             document.body.innerHTML = clone
@@ -576,7 +575,7 @@ function leaderBoard(response){
       for (let i = 0; i < json.length; i++) {
         const game = json[i];
         if(game.nickname === "blank" || game.nickname === ""){
-          game.nickname = `user ${game.user_id}`
+          game.nickname = `user`
         }
         let li = document.createElement("li")
         let span1 = document.createElement("span")
