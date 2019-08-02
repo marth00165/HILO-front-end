@@ -110,30 +110,49 @@ const gamesURL = 'https://intense-tundra-74441.herokuapp.com/games'
       var key = e.which || e.keyCode;
       if(key === 13){
         let name = e.target.value
-        user1nameSpace.innerText = name
-        user1info.removeChild(nameInput1)
-        user1info.appendChild(user1nameSpace)
-        nameInput1.removeEventListener("blur")
+        if(name === ""){
+          
+        }else{
+          user1nameSpace.innerText = name
+          user1info.removeChild(nameInput1)
+          user1info.appendChild(user1nameSpace)
+          
+        }
       }
     })
     nameInput1.addEventListener("blur", function(e){
-        user1nameSpace.innerText = e.target.value
-        user1info.removeChild(nameInput1)
-        user1info.appendChild(user1nameSpace)
+      if(key === 13){
+        let name = e.target.value
+        if(name === ""){
+          
+        }else{
+          user1nameSpace.innerText = name
+          user1info.removeChild(nameInput1)
+          user1info.appendChild(user1nameSpace)
+        }
+      }
     })
     nameInput2.addEventListener("keypress", function(e){
       var key = e.which || e.keyCode;
       if(key === 13){
-        user2nameSpace.innerText = e.target.value
-        user2info.removeChild(nameInput2)
-        user2info.appendChild(user2nameSpace)
-        nameInput1.removeEventListener("blur")
+        let name = e.target.value
+        if(name === ""){
+          
+        }else{
+          user2nameSpace.innerText = name
+          user2info.removeChild(nameInput2)
+          user2info.appendChild(user2nameSpace)
+        }
       }
     })
     nameInput2.addEventListener("blur", function(e){
-        user2nameSpace.innerText = e.target.value
+      if(name === ""){
+        
+      }else{
+        user2nameSpace.innerText = name
         user2info.removeChild(nameInput2)
         user2info.appendChild(user2nameSpace)
+      }
     })
 
     //buttons append
